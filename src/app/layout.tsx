@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Sidebar from "./components/sidebar";
+import Topbar from "./components/topbar";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -26,9 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-hidden`}
       >
-        {children}
+        <div className="flex h-full">
+          <Sidebar />
+          <main className="flex-1 overflow-y-auto px-10 bg-[#FAF9F6]">
+            <Topbar />
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
